@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="map" default="do">
+
+	<!-- import task -->
+	<import file="${project.basedir}/../_4all/tasks.xml"/>
+
+	<target name="do">
+
+		<echo msg="***************************" />
+		<echo msg="* MAP: babioonlinkcontent *" />
+		<echo msg="***************************" />
+
+		<phingcall target="symboliclink">
+			<property name="source" value="${packagedir}/${projectname}/code/plugins/content/babioonlinkcontent" />
+			<property name="target" value="${targetdir}/plugins/search/babioonlinkcontent" />
+		</phingcall>
+
+		<phingcall target="maplanguage">
+			<property name="basesource" value="${packagedir}/${projectname}/code/plugins/search/babioonlinkcontent/language" />
+			<property name="basetarget" value="${targetdir}/administrator/language" />
+		</phingcall>
+
+	</target>
+</project>

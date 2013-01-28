@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="content">
+	<name>plg_content_babioonlinkcontent</name>
+	<creationDate>Januar 2013</creationDate>
+	<author>Robert Deutz</author>
+	<copyright>Robert Deutz Business Solution</copyright>
+	<license>GNU General Public License version 3</license>
+	<authorEmail>contact@babioon.com</authorEmail>
+	<authorUrl>www.babioon.com</authorUrl>
+	<version>2.0</version>
+	<description>BABIOONLINKCONTENT_PLG_CONTENT_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="babioonlinkcontent">babioonlinkcontent.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_content_babioonlinkcontent.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_content_babioonlinkcontent.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="babioontag" type="text"
+					default="babioonlc" label="BABIOONLINKCONTENT_PLG_CONTENT_BABIOONTAG"
+					description="BABIOONLINKCONTENT_PLG_CONTENT_BABIOONTAG_DESC" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>
