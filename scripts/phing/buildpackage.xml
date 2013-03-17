@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="buildpackage" default="do">
+
+	<target name="do">
+		<!-- import task -->
+		<import file="${project.basedir}/../../../_4all/tasks.xml"/>
+
+		<property name="filebase" value="${project.basedir}/../../.." override="false"/>
+		<property name="pname"    value="babioon-linkcontent" override="true"/>
+		<property name="codebase" value="${filebase}/${pname}/code" override="true"/>
+
+
+		<getversion propertyname="vn" filename="${codebase}/plugins/content/babioonlinkcontent/babioonlinkcontent.xml" />
+
+		<echo>Versionnumber: ${vn}</echo>
+
+		<echo msg="**************************************" />
+		<echo msg="* Build-Package: babioon-linkcontent *" />
+		<echo msg="**************************************" />
+
+		<property name="bp_targetdir" value="${filebase}/build/babioonlinkcontent" />
+
+        <mkdir dir="${filebase}/build" />
+		<mkdir dir="${filebase}/build/${bp_targetdir}" />
+
+		<copy file="${codebase}/plugins/content/babioonlinkcontent/babioonlinkcontent.xml" tofile="${bp_targetdir}/babioonlinkcontent.xml" overwrite="true"/>
+		<copy file="${codebase}/plugins/content/babioonlinkcontent/babioonlinkcontent.php" tofile="${bp_targetdir}/babioonlinkcontent.php" overwrite="true"/>
+		<copy file="${codebase}/plugins/content/babioonlinkcontent/index.html" tofile="${bp_targetdir}/index.html" overwrite="true"/>
+		<copy todir="${bp_targetdir}" overwrite="true">
+			<fileset dir="${codebase}/plugins/content/babioonlinkcontent" >
+				<include name="language/**" />
+			</fileset>
+		</copy>
+
+		<if>
+			<isset property="vn" />
+			<then>
+				<property name="zipfile" value="${filebase}/build/${pname}-${vn}.zip"/>
+			</then>
+			<else>
+				<property name="zipfile" value="${filebase}/build/${pname}.zip"/>
+			</else>
+		</if>
+
+
+		<delete file="${filebase}/build/${zipfile}" failonerror="false" quiet="true"/>
+		<!-- zipfilename must match to projectname -->
+		<zip destfile="${filebase}/build/${zipfile}" basedir="${bp_targetdir}" />
+	</target>
+</project>
